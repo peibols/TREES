@@ -14,31 +14,31 @@ int main () {
 	ofstream fffile;
 	ofstream shapfile;
 
-	//#define HADRONIC
+	#define HADRONIC
         #define VAC
 
 #ifndef HADRONIC
 	std::ifstream infile2("/home/peibols/NewHD/UliInv/Strong276/BACK1/1A.txt");
 	#ifdef VAC
-		fffile.open ("Backreaction/FFcheck/FFPartVnoEta.dat");
-		shapfile.open ("Backreaction/FFcheck/ShapPartVnoEta.dat");
+		fffile.open ("Backreaction/FFcheck/FFPartVnoEtaSmear.dat");
+		shapfile.open ("Backreaction/FFcheck/ShapPartVnoEtaSmear.dat");
 	#endif
 	#ifndef VAC
-		fffile.open ("Backreaction/FFcheck/FFPartMnoEta.dat");
-                shapfile.open ("Backreaction/FFcheck/ShapPartMnoEta.dat");
+		fffile.open ("Backreaction/FFcheck/FFPartMnoEtaSmear.dat");
+                shapfile.open ("Backreaction/FFcheck/ShapPartMnoEtaSmear.dat");
 	#endif
 #endif
 
 #ifdef HADRONIC
 	#ifdef VAC
 		std::ifstream infile2("/home/peibols/NewHD/UliInv/Strong276/hadVAC.txt");
-		fffile.open ("Backreaction/FFcheck/FFHadVnoEta.dat");
-		shapfile.open ("Backreaction/FFcheck/ShapHadVnoEta.dat");
+		fffile.open ("Backreaction/FFcheck/FFHadVnoEtaSmear.dat");
+		shapfile.open ("Backreaction/FFcheck/ShapHadVnoEtaSmear.dat");
 	#endif
 	#ifndef VAC
 		std::ifstream infile2("/home/peibols/NewHD/UliInv/Strong276/BACK1/1Ahad.txt");
-		fffile.open ("Backreaction/FFcheck/FFHadMnoEta.dat");
-		shapfile.open ("Backreaction/FFcheck/ShapHadMnoEta.dat");
+		fffile.open ("Backreaction/FFcheck/FFHadMnoEtaSmear.dat");
+		shapfile.open ("Backreaction/FFcheck/ShapHadMnoEtaSmear.dat");
 	#endif
 #endif
 
@@ -53,7 +53,7 @@ int main () {
         double sigma=0.01;
 	double axgauss, shphi, shrap, munt, fu, rup;
 
-	int smearpt=0;
+	int smearpt=1;
 	double sfac=5.23;
 
 	int etareflec=0;
