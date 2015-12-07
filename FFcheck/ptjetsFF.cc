@@ -20,25 +20,25 @@ int main () {
 #ifndef HADRONIC
 	std::ifstream infile2("/home/peibols/NewHD/UliInv/Strong276/BACK1/1A.txt");
 	#ifdef VAC
-		fffile.open ("Backreaction/FFcheck/FFPartV.dat");
-		shapfile.open ("Backreaction/FFcheck/ShapPartV.dat");
+		fffile.open ("Backreaction/FFcheck/FFPartVnoEta.dat");
+		shapfile.open ("Backreaction/FFcheck/ShapPartVnoEta.dat");
 	#endif
 	#ifndef VAC
-		fffile.open ("Backreaction/FFcheck/FFPartM.dat");
-                shapfile.open ("Backreaction/FFcheck/ShapPartM.dat");
+		fffile.open ("Backreaction/FFcheck/FFPartMnoEta.dat");
+                shapfile.open ("Backreaction/FFcheck/ShapPartMnoEta.dat");
 	#endif
 #endif
 
 #ifdef HADRONIC
 	#ifdef VAC
 		std::ifstream infile2("/home/peibols/NewHD/UliInv/Strong276/hadVAC.txt");
-		fffile.open ("Backreaction/FFcheck/FFHadV.dat");
-		shapfile.open ("Backreaction/FFcheck/ShapHadV.dat");
+		fffile.open ("Backreaction/FFcheck/FFHadVnoEta.dat");
+		shapfile.open ("Backreaction/FFcheck/ShapHadVnoEta.dat");
 	#endif
 	#ifndef VAC
 		std::ifstream infile2("/home/peibols/NewHD/UliInv/Strong276/BACK1/1Ahad.txt");
-		fffile.open ("Backreaction/FFcheck/FFHadM.dat");
-		shapfile.open ("Backreaction/FFcheck/ShapHadM.dat");
+		fffile.open ("Backreaction/FFcheck/FFHadMnoEta.dat");
+		shapfile.open ("Backreaction/FFcheck/ShapHadMnoEta.dat");
 	#endif
 #endif
 
@@ -55,6 +55,8 @@ int main () {
 
 	int smearpt=0;
 	double sfac=5.23;
+
+	int etareflec=0;
 
 	int count=0;
 	double R=0.3;
@@ -237,7 +239,7 @@ int main () {
 					rDeltaR=sqrt(pow(DeltaPhi+shphi,2.)+pow(rDeltaRap-shrap,2.));
 					if (rDeltaR!=rDeltaR) rDeltaR=0.;
 					if (rDeltaR<R && ptfrag>fptcut && pchar[vt]!=0.) {
-                                                ishapm[int(rDeltaR/binsize)]-=ptfrag;
+                                                if (etareflec!=0) ishapm[int(rDeltaR/binsize)]-=ptfrag;
                                         }
 					DeltaRf=sqrt(pow(DeltaPhi,2.)+pow(DeltaRap,2.));
                                 	if (DeltaRf!=DeltaRf) DeltaRf=0.;
@@ -251,7 +253,7 @@ int main () {
                                         if (rDeltaRf<R && ptfrag>fptcut && pchar[vt]!=0.) {
                                                 vari=(momx[vt]*rj[h][7]+momy[vt]*rj[h][8]-momz[vt]*rj[h][9])/(fac*(pow(rj[h][7],2.)+pow(rj[h][8],2.)+pow(rj[h][9],2.)));
                                                 na=int(2.*log(1./vari));
-                                                if (na>=0) fragm[na]-=1.;
+                                                if (na>=0 && etareflec!=0) fragm[na]-=1.;
                                  	}
 				}
 				double mptcone=0.;
