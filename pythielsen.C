@@ -1,3 +1,10 @@
+/*
+This program generates a "Tree" file for a hard scattering for a certain minimum transverse momentum (pTHatMin).
+It includes Initial State Radiation (ISR), which corresponds to particles emitted before the hard scattering takes place (more like
+in real experiments). The logic to reconstruct the genealogic tree of final particles (this is, particles ready to hadronize) 
+is basically by summing the 4-momentum of sisters in order to get the one from the mother.
+*/
+
 #include "Pythia8/Pythia.h"
 #include "Pythia8/Event.h"
 #include <math.h>
@@ -9,9 +16,10 @@ using namespace Pythia8;
 
 int pythielsen() {
 
+//Output File
 ofstream geneal;
-
 geneal.open ("TREES/tree50test.txt");
+
 Pythia pythia;
 pythia.readString("Beams:idB = 2212");	//Collide protons
 pythia.readString("Beams:eCM = 2760.");	//At this center of mass energy (GeV)
@@ -111,7 +119,7 @@ for (unsigned ei = 0; ei<1; ei++) {
 					//Set these 2 partons as "done"
                    			ultra[m][5]=1;
                    			ultra[l][5]=1;
-					//If there have been less splittings than # of final particles (which is always true...) start the double loop again. We are out of the loops when the "if" condition in line 90 is not met
+					//If there have been less splittings than # of final particles (which is always true...) start the double loop again. We are out of the loops when the "if" condition above is not met
                    			if (counter < finals) goto donantli;
                 		}
             		}
