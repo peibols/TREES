@@ -1,0 +1,28 @@
+set yrange[0.2:1.9]
+set size (1.,1.)
+set xrange[0:0.3]
+set mxtics
+set mytics
+set border linewidth 3
+set style line 1 lc rgb '#000000'   
+set style line 2 lc rgb '#0000CD'
+set style line 3 lc rgb '#FF0000'
+set style line 4 lc rgb '#228B22'
+set style line 5 lc rgb '#FF8C00'
+set style line 5 lt 2 lc rgb 'black' lw 2
+#set terminal png truecolor
+set ylabel "PbPb/pp" 
+set xlabel "r" 
+set key at 0.25,1.72
+set label 1 "10-30$\\%$ Centrality"  at 0.015,1.36
+set label 2 "$100<P_{T}^{jet}<300$ GeV" at 0.015,1.77
+set label 4 "$P_T^{parton}>1$ GeV" at 0.015,1.63
+set label 3 "$0.3<|\\eta|<2$, $r<0.3$" at 0.015,1.49
+f(x)=1.
+set style fill transparent solid 0.5 noborder
+
+plot '../Shap/2Shap03.dat' w filledcu t 'Back' ls 3,'../Shap/2Shap03nb.dat' w filledcu t 'No Back' ls 1, f(x) ls 5 notitle, 'CMS/CMSShapes1030.txt' u 1:2:(sqrt(($3)*($3)+($2-$4)*($2-$4))) with errorbars linecolor rgb "black" pt 7 ps 0.7 t 'CMS Data'
+
+set terminal cairolatex truecolor
+set output 'raa.tex'
+replot
