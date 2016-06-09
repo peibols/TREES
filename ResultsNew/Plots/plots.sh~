@@ -1,0 +1,71 @@
+gnuplot Asym0-10.gnu
+pdflatex test.tex
+pdfcrop test.pdf AA.pdf
+
+gnuplot Asym10-30.gnu
+pdflatex test.tex
+pdfcrop test.pdf AB.pdf
+
+gnuplot Asym30-50.gnu
+pdflatex test.tex
+pdfcrop test.pdf AC.pdf
+
+gnuplot Asym50-70.gnu
+pdflatex test.tex
+pdfcrop test.pdf AD.pdf
+
+gnuplot sAsym0-10.gnu
+pdflatex test.tex
+pdfcrop test.pdf sAA.pdf
+
+gnuplot sAsym10-30.gnu
+pdflatex test.tex
+pdfcrop test.pdf sAB.pdf
+
+gnuplot sAsym30-50.gnu
+pdflatex test.tex
+pdfcrop test.pdf sAC.pdf
+
+gnuplot sAsym50-70.gnu
+pdflatex test.tex
+pdfcrop test.pdf sAD.pdf
+
+gnuplot FF0-10.gnu
+pdflatex test.tex
+pdfcrop test.pdf FA.pdf
+
+gnuplot FF10-30.gnu
+pdflatex test.tex
+pdfcrop test.pdf FB.pdf
+
+gnuplot FF30-50.gnu
+pdflatex test.tex
+pdfcrop test.pdf FC.pdf
+
+gnuplot FF50-70.gnu
+pdflatex test.tex
+pdfcrop test.pdf FD.pdf
+
+gnuplot Lamb0-10.gnu
+pdflatex test.tex
+pdfcrop test.pdf LA.pdf
+
+gnuplot Lamb10-30.gnu
+pdflatex test.tex
+pdfcrop test.pdf LB.pdf
+
+gnuplot Lamb30-50.gnu
+pdflatex test.tex
+pdfcrop test.pdf LC.pdf
+
+gnuplot Lamb50-70.gnu
+pdflatex test.tex
+pdfcrop test.pdf LD.pdf
+
+gnuplot Dijet.gnu
+pdflatex test.tex
+pdfcrop test.pdf Dijet.pdf
+
+gnuplot NQGCent.gnu
+pdflatex test.tex
+pdfcrop test.pdf NQG.pdf
